@@ -13,7 +13,7 @@ const VideoCard = props => {
   const {id, title, thumbnailUrl, viewCount} = videoDetails
 
   return (
-    <ThemeAndSavedVideosContext>
+    <ThemeAndSavedVideosContext.Consumer>
       {value => {
         const {isDarkTheme} = value
         const textColor = isDarkTheme ? '#f9f9f9' : '#231f20'
@@ -32,7 +32,7 @@ const VideoCard = props => {
           </VideoLink>
         )
       }}
-    </ThemeAndSavedVideosContext>
+    </ThemeAndSavedVideosContext.Consumer>
   )
 }
 

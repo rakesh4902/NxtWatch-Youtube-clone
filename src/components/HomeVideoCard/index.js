@@ -24,7 +24,7 @@ const HomeVideoCard = props => {
     profileImageUrl,
   } = video
   return (
-    <ThemeAndSavedVideosContext>
+    <ThemeAndSavedVideosContext.Consumer>
       {value => {
         const {isDarkTheme} = value
         const textColor = isDarkTheme ? '#f9f9f9' : '#231f20'
@@ -47,7 +47,7 @@ const HomeVideoCard = props => {
           </VideoLink>
         )
       }}
-    </ThemeAndSavedVideosContext>
+    </ThemeAndSavedVideosContext.Consumer>
   )
 }
 

@@ -106,7 +106,7 @@ class TrendingVideos extends Component {
 
   render() {
     return (
-      <ThemeAndSavedVideosContext>
+      <ThemeAndSavedVideosContext.Consumer>
         {value => {
           const {isDarkTheme} = value
           // console.log(isDarkTheme)
@@ -130,7 +130,7 @@ class TrendingVideos extends Component {
             </>
           )
         }}
-      </ThemeAndSavedVideosContext>
+      </ThemeAndSavedVideosContext.Consumer>
     )
   }
 }
