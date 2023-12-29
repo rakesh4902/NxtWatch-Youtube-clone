@@ -77,7 +77,7 @@ class GamingVideos extends Component {
   }
 
   renderLoaderView = () => (
-    <LoaderContainer>
+    <LoaderContainer data-testid="loader">
       <Loader type="ThreeDots" color="#ffffff" height="50" width="50" />
     </LoaderContainer>
   )
@@ -114,6 +114,7 @@ class GamingVideos extends Component {
           const trendingHeaderBgColor = isDarkTheme ? '#212121' : '#ebebeb'
           const textColor = isDarkTheme ? '#f9f9f9' : '#231f20'
           const iconBgColor = isDarkTheme ? '#000000' : '#d7dfe9'
+
           return (
             <>
               <Header />

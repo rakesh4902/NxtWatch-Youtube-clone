@@ -17,7 +17,7 @@ const NotFound = () => (
       const headingColor = isDarkTheme ? '#f1f5f9' : '#1e293b'
       const descColor = isDarkTheme ? '#e2e8f0' : '#475569'
 
-      const pageNotFoundImageUrl = isDarkTheme
+      const NotFoundImageUrl = isDarkTheme
         ? 'https://assets.ccbp.in/frontend/react-js/nxt-watch-not-found-light-theme-img.png'
         : 'https://assets.ccbp.in/frontend/react-js/nxt-watch-not-found-dark-theme-img.png'
 
@@ -27,7 +27,7 @@ const NotFound = () => (
           <NavBarActions />
           <PageNotFoundContainer bgColor={bgColor}>
             <PageNotFoundView>
-              <PageNotFoundImage src={pageNotFoundImageUrl} alt="not found" />
+              <PageNotFoundImage src={NotFoundImageUrl} alt="not found" />
               <PageNotFoundHead color={headingColor}>
                 Page Not Found
               </PageNotFoundHead>

@@ -21,8 +21,7 @@ const FailureView = props => {
       <FailedImage src={failureImageUrl} alt="failure view" />
       <FailedHeading>Oops! Something Went Wrong</FailedHeading>
       <FailedNote>
-        We are having some trouble to complete your request.Please try again
-        later.
+        We are having some trouble to complete your request. Please try again.
       </FailedNote>
       <RetryButton type="button" onClick={onClickRetry}>
         Retry

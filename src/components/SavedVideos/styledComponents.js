@@ -15,7 +15,6 @@ export const SavedVideosContainer = styled.div`
 `
 export const SavedVideosHeader = styled.div`
   display: flex;
-  background-color: #ebebeb;
   padding: 25px;
   margin-left: 0px;
   width: 98%;

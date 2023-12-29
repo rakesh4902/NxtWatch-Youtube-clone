@@ -1,4 +1,4 @@
-import {BsMoonFill, BsBrightnessHigh} from 'react-icons/bs'
+import {BsMoon, BsBrightnessHigh} from 'react-icons/bs'
 import {FiLogOut} from 'react-icons/fi'
 import {GiHamburgerMenu} from 'react-icons/gi'
 import Popup from 'reactjs-popup'
@@ -74,7 +74,7 @@ const Header = props => {
                   {isDarkTheme ? (
                     <BsBrightnessHigh size={30} color={iconColor} />
                   ) : (
-                    <BsMoonFill size={25} />
+                    <BsMoon size={25} />
                   )}
                 </ThemeButton>
                 <ProfileImageIcon

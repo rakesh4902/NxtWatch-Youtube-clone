@@ -30,7 +30,6 @@ export const TrendingIconButton = styled.button`
   height: 80px;
   border-radius: 50px;
   border-width: 0px;
-  background-color: ;
   margin-left: 100px;
   background-color: ${props => props.bgColor};
   @media screen and (max-width: 576px) {
