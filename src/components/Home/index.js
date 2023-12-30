@@ -170,6 +170,7 @@ class Home extends Component {
                   <SearchIconContainer
                     data-testid="searchButton"
                     onClick={this.getSearchInputResults}
+                    type="button"
                   >
                     <AiOutlineSearch size={20} />
                   </SearchIconContainer>

@@ -99,7 +99,7 @@ const WatchVideo = props => {
                     onClick={onClickLike}
                   >
                     <AiOutlineLike size={25} />
-                    <ButtonText>Like</ButtonText>
+                    Like
                   </SocialButton>
                 </BtnContainer>
                 <BtnContainer>
@@ -109,7 +109,7 @@ const WatchVideo = props => {
                     onClick={onClickDislike}
                   >
                     <AiOutlineDislike size={25} />
-                    <ButtonText>Dislike</ButtonText>
+                    Dislike
                   </SocialButton>
                 </BtnContainer>
                 <BtnContainer>

@@ -22,7 +22,7 @@ export const FailedHeading = styled.h1`
 `
 
 export const FailedNote = styled.p`
-  font-family: ' Roboto';
+  font-family: 'Roboto';
   font-size: 18px;
   color: ${props => props.noteColor};
   text-align: center;
@@ -37,6 +37,6 @@ export const RetryButton = styled.button`
   padding-right: 10px;
   padding-top: 5px;
   padding-bottom: 5px;
-  font-family: Roboto;
+  font-family: 'Roboto';
   font-size: 15px;
 `
