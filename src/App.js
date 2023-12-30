@@ -17,7 +17,15 @@ class App extends Component {
   state = {
     savedVideos: [],
     activeTab: localStorage.getItem('activeTab') || 'Home',
-    isDarkTheme: false,
+    isDarkTheme: localStorage.getItem('isDarkTheme') === 'true' || false,
+  }
+
+  componentDidMount() {
+    // Check if theme is stored in localStorage and set it in state
+    const storedTheme = localStorage.getItem('isDarkTheme')
+    if (storedTheme !== null) {
+      this.setState({isDarkTheme: storedTheme === 'true'})
+    }
   }
 
   onChangeActiveTab = tab => {
@@ -39,7 +47,14 @@ class App extends Component {
   }
 
   toggleTheme = () => {
-    this.setState(prev => ({isDarkTheme: !prev.isDarkTheme}))
+    this.setState(prevState => {
+      const {isDarkTheme} = prevState
+      const updatedTheme = !isDarkTheme
+
+      localStorage.setItem('isDarkTheme', updatedTheme)
+
+      return {isDarkTheme: updatedTheme}
+    })
   }
 
   render() {
