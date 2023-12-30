@@ -17,7 +17,7 @@ const apiStatus = {
   failure: 'FAILURE',
 }
 
-class VideoDetailView extends Component {
+class VideoItemDetails extends Component {
   state = {
     videoDetailsData: [],
     apiRequestStatus: apiStatus.initial,
@@ -31,6 +31,7 @@ class VideoDetailView extends Component {
 
   getVideoDetailsData = async () => {
     this.setState({apiRequestStatus: apiStatus.inProgress})
+    const {onChangeActiveTab} = this.context
     console.log(this.props)
     const {match} = this.props
     const {params} = match
@@ -47,7 +48,6 @@ class VideoDetailView extends Component {
     const response = await fetch(apiUrl, options)
     if (response.ok) {
       const data = await response.json()
-      // console.log(data)
       const caseConversionData = {
         id: data.video_details.id,
         title: data.video_details.title,
@@ -61,6 +61,8 @@ class VideoDetailView extends Component {
         subscriberCount: data.video_details.channel.subscriber_count,
       }
       console.log(caseConversionData)
+
+      onChangeActiveTab('')
 
       this.setState({
         videoDetailsData: caseConversionData,
@@ -91,46 +93,48 @@ class VideoDetailView extends Component {
     </LoaderContainer>
   )
 
-  renderPlayVideoView = () => {
-    const {videoDetailsData, isLiked, isDisLiked} = this.state
-    return (
-      <WatchVideo
-        videoDetailsData={videoDetailsData}
-        clickLiked={this.clickLiked}
-        clickDisLiked={this.clickDisLiked}
-        isLiked={isLiked}
-        isDisLiked={isDisLiked}
-      />
-    )
-  }
-
-  onRetryGetVideo = () => {
-    this.getVideoDetailsView()
-  }
-
-  renderFailureView = () => <FailureView onRetry={this.onRetryGetVideo} />
-
-  renderVideoDetailView = () => {
-    const {apiRequestStatus} = this.state
-
-    switch (apiRequestStatus) {
-      case apiStatus.success:
-        return this.renderPlayVideoView()
-      case apiStatus.failure:
-        return this.renderFailureView()
-      case apiStatus.inProgress:
-        return this.renderLoaderView()
-      default:
-        return null
-    }
-  }
-
   render() {
     return (
       <ThemeAndSavedVideosContext.Consumer>
         {value => {
           const {isDarkTheme} = value
           const bgColor = isDarkTheme ? '#0f0f0f ' : '#f9f9f9'
+          const renderPlayVideoView = () => {
+            const {videoDetailsData, isLiked, isDisLiked} = this.state
+
+            return (
+              <WatchVideo
+                videoDetailsData={videoDetailsData}
+                clickLiked={this.clickLiked}
+                clickDisLiked={this.clickDisLiked}
+                isLiked={isLiked}
+                isDisLiked={isDisLiked}
+              />
+            )
+          }
+
+          const onRetryGetVideo = () => {
+            this.getVideoDetailsView()
+          }
+
+          const renderFailureView = () => (
+            <FailureView onRetry={onRetryGetVideo} />
+          )
+
+          const renderVideoDetailView = () => {
+            const {apiRequestStatus} = this.state
+
+            switch (apiRequestStatus) {
+              case apiStatus.success:
+                return renderPlayVideoView()
+              case apiStatus.failure:
+                return renderFailureView()
+              case apiStatus.inProgress:
+                return this.renderLoaderView()
+              default:
+                return null
+            }
+          }
 
           return (
             <>
@@ -140,7 +144,7 @@ class VideoDetailView extends Component {
                 data-testid="videoItemDetails"
                 bgColor={bgColor}
               >
-                {this.renderVideoDetailView()}
+                {renderVideoDetailView()}
               </VideoDetailsViewContainer>
             </>
           )
@@ -150,4 +154,7 @@ class VideoDetailView extends Component {
   }
 }
 
-export default VideoDetailView
+// Assign the contextType to access the context in class components
+VideoItemDetails.contextType = ThemeAndSavedVideosContext
+
+export default VideoItemDetails

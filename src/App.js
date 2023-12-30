@@ -13,16 +13,16 @@ import ThemeAndSavedVideosContext from './context/ThemeAndSavedVideosContext'
 
 import './App.css'
 
-// Replace your code here
 class App extends Component {
   state = {
     savedVideos: [],
-    activeTab: 'Home',
+    activeTab: localStorage.getItem('activeTab') || 'Home',
     isDarkTheme: false,
   }
 
   onChangeActiveTab = tab => {
     this.setState({activeTab: tab})
+    localStorage.setItem('activeTab', tab)
   }
 
   addVideo = videoDetails => {
@@ -31,10 +31,8 @@ class App extends Component {
       eachVideo => eachVideo.id === videoDetails.id,
     )
     if (isPresentIndex === -1) {
-      // video not present in saved videos so need to add that
       this.setState({savedVideos: [...savedVideos, videoDetails]})
     } else {
-      // video is present so need to remove that
       savedVideos.splice(isPresentIndex, 1)
       this.setState({savedVideos})
     }
